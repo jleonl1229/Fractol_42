@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 15:33:58 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/06/25 17:43:34 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/06/26 11:37:21 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,25 @@ static void    malloc_error(void)
     exit(1);
 }
 
+void    data_init(t_fractal *fractal)
+{
+    fractal->escaped_value = 4;
+    fractal->iterations_definition = 42;
+}
+
 void    fractal_init(t_fractal *fractal)
 {
-    fractal->mlx_connection = mlx_init();
+    fractal->mlx_connection = mlx_init();//Starts the connection
     if (fractal->mlx_connection == NULL)
         malloc_error();
-    fractal->mlx_window = mlx_new_window(fractal->mlx_connection,
-        WIDTH, HEIGHT, fractal->name);
-    if (fractal->mlx_connection == NULL)
+    fractal->mlx_window = mlx_new_window(fractal->mlx_connection, WIDTH, HEIGHT, fractal->name);
+    if (fractal->mlx_window == NULL)
     {
         mlx_destroy_display(fractal->mlx_connection);
         free(fractal->mlx_connection);
         malloc_error();
     }
-    fractal->img.img_ptr = mlx_new_image(fractal->mlx_connection,
-        WIDTH, HEIGHT);
+    fractal->img.img_ptr = mlx_new_image(fractal->mlx_connection, WIDTH, HEIGHT);
     if (fractal->img.img_ptr == NULL)
     {
         mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
@@ -40,8 +44,5 @@ void    fractal_init(t_fractal *fractal)
         free(fractal->mlx_connection);
         malloc_error();
     }
-    fractal->img.pixels_ptr = mlx_get_data_addr(fractal->img.img_ptr,
-        &fractal->img.bpp,
-        &fractal->img.line_len,
-        &fractal->img.endian);
+    fractal->img.pixels_ptr = mlx_get_data_addr(fractal->img.img_ptr, &fractal->img.bpp, &fractal->img.line_len, &fractal->img.endian);
 }
