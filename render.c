@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 08:58:35 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/06/26 11:39:57 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/06/26 17:56:31 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ void    handle_pixel(int x, int y, t_fractal *fractal)
         z = sum_complex(sqare_complex(z), c);
         if ((z.x * z.x) + (z.y * z.y) > fractal->escaped_value)
         {
-            color = map(i, BLACK, WHITE, 0, fractal->iterations_definition);
+            color = map(i, CORAL_PINK_RGB, WHITE, 0, fractal->iterations_definition);
             my_pixel_put(x, y, &fractal->img, color);
             return ;
         }
         ++i;
     }
-    my_pixel_put(x, y, &fractal->img, WHITE);
+    my_pixel_put(x, y, &fractal->img, OPOSITE_CORAL);
 }
 
 void    fractal_render(t_fractal *fractal)
