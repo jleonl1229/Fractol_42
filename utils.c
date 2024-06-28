@@ -6,25 +6,25 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:26:53 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/06/27 18:23:12 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:22:23 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void    mess(int fd, char *str)
+void	mess(int fd, char *str)
 {
-    int i;
+	int	i;
 
-    if (fd < 0 || !str)
-        return ;
-    if (*str)
-    {
-        i = write(fd, str, 1);
-        if (i == -1)
-            exit(1);
-        mess(fd, str + 1);
-    }
+	if (fd < 0 || !str)
+		return ;
+	if (*str)
+	{
+		i = write(fd, str, 1);
+		if (i == -1)
+			exit(1);
+		mess(fd, str + 1);
+	}
 }
 
 double	atod(char *s)
