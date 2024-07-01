@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 08:58:35 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/06/28 13:28:06 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/07/01 16:10:47 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,15 @@ void	handle_pixel(int x, int y, t_fractal *fractal)
 	int			color;
 
 	i = 0;
-	z.x = (map(x, -2, +2, 0, WIDTH) * fractal->zoom) + fractal->shift_x;
-	z.y = (map(y, +2, -2, 0, HEIGHT) * fractal->zoom) + fractal->shift_y;
+	z.x = (map(x, -2, +2, WIDTH) * fractal->zoom) + fractal->shift_x;
+	z.y = (map(y, +2, -2, HEIGHT) * fractal->zoom) + fractal->shift_y;
 	mandel_vs_julia(&z, &c, fractal);
 	while (i < fractal->iterations_definition)
 	{
 		z = sum_complex(sqare_complex(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fractal->escaped_value)
 		{
-			color = map(i, CORAL_PINK_RGB, WHITE, 0,
+			color = map(i, CORAL_PINK_RGB, WHITE,
 					fractal->iterations_definition);
 			my_pixel_put(x, y, &fractal->img, color);
 			return ;

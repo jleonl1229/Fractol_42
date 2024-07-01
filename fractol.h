@@ -6,7 +6,7 @@
 /*   By: jleon-la <jleon-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:33:51 by jleon-la          #+#    #+#             */
-/*   Updated: 2024/06/27 19:02:37 by jleon-la         ###   ########.fr       */
+/*   Updated: 2024/07/01 16:09:23 by jleon-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct s_fractal
 void        fractal_init(t_fractal *fractal);
 void        data_init(t_fractal *fractal);
 void        mess(int fd, char *str);
-double      map(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
+double      map(double unscaled_num, double new_min, double new_max, double old_max);
 t_complex   sum_complex(t_complex z1, t_complex z2);
 t_complex   sqare_complex(t_complex z);
 void        fractal_render(t_fractal *fractal);
